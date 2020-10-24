@@ -11,11 +11,11 @@ provider:
   stage: ${opt:stage, 'dev'}
   region: us-east-1
   iamRoleStatements:
-    - ${file(slsConfig/iamRoleStatements/lambda.yml)}
-  environment: ${file(slsConfig/env/env.yml):${self:custom.stage}}
+    - ${file(sls/iamRoleStatements/lambda.yml)}
+  environment: ${file(sls/env/env.yml):${self:custom.stage}}
 
 functions:
-  - ${file(slsConfig/functions/middyDemo.yml)}
+  - ${file(sls/functions/middyDemo.yml)}
 
 custom:
   stage: ${opt:stage, self:provider.stage}
