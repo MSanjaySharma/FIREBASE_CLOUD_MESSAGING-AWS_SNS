@@ -39,6 +39,7 @@ export const createPlatformEndpoint = (platform, deviceId, deviceToken) => {
   return snsClient.createPlatformEndpointAsync(snsParams);
 };
 
+/* Publish message to particular device */
 export const publish = (endpoint, platform, message, title) => {
   let payloadKey,
     payload = "";
