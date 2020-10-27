@@ -8,4 +8,12 @@ token-generation:
         # authorizer: aws_iam
         request:
           schema:
-            application/json: ${file(assets/doc/schema/device/createRequest.json)}
+            application/json: ${file(assets/schema/token-generation.json)}
+
+post-message-test:
+  handler: src/lambda/post-message.handler
+  events:
+    - http:
+        path: notif_test
+        method: POST
+        cors: true
