@@ -1,0 +1,5 @@
+Effect: Allow
+Action:
+  - lambda:InvokeFunction
+Resource:
+  - arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:*

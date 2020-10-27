@@ -1,0 +1,11 @@
+Effect: Allow
+Action:
+  - sns:CreatePlatformEndpoint
+  - sns:CreateTopic
+  - sns:DeleteEndpoint
+  - sns:DeleteTopic
+  - sns:Publish
+  - sns:Subscribe
+  - sns:Unsubscribe
+Resource:
+  - "arn:aws:sns:${self:custom.region}:*:*"

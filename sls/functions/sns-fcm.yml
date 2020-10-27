@@ -17,3 +17,5 @@ post-message-test:
         path: notif_test
         method: POST
         cors: true
+        schema:
+          application/json: ${file(assets/schema/post-message.json)}

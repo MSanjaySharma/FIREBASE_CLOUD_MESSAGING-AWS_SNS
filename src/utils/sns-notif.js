@@ -1,5 +1,7 @@
 const AWS = require("aws-sdk");
 
+const snsClient = new AWS.SNS({ region: process.env.REGION });
+
 const buildAPSPayloadString = (message, title) => {
   return JSON.stringify({
     aps: {
@@ -20,10 +22,6 @@ const buildFCMPayloadString = (message, title) => {
 
 /* create individual platform endpoint */
 export const createPlatformEndpoint = (platform, deviceId, deviceToken) => {
-  const snsClient = Promise.promisifyAll(
-    new AWS.SNS({ region: process.env.REGION })
-  );
-
   let applicationArn = "";
 
   if (platform === "ios") {
@@ -36,13 +34,13 @@ export const createPlatformEndpoint = (platform, deviceId, deviceToken) => {
     PlatformApplicationArn: applicationArn,
     CustomUserData: deviceId,
   };
-  return snsClient.createPlatformEndpointAsync(snsParams);
+  return snsClient.createPlatformEndpoint(snsParams).promise();
 };
 
 /* Publish message to particular device */
 export const publish = (endpoint, platform, message, title) => {
-  let payloadKey,
-    payload = "";
+  let payloadKey = "";
+  let payload = "";
   if (platform === "ios") {
     payloadKey = "APNS";
     payload = buildAPSPayloadString(message, title);
@@ -50,9 +48,6 @@ export const publish = (endpoint, platform, message, title) => {
     payloadKey = "GCM";
     payload = buildFCMPayloadString(message, title);
   }
-  const snsClient = Promise.promisifyAll(
-    new AWS.SNS({ region: process.env.REGION })
-  );
   let snsMessage = {};
   snsMessage[payloadKey] = payload;
 
@@ -61,5 +56,5 @@ export const publish = (endpoint, platform, message, title) => {
     TargetArn: endpoint,
     MessageStructure: "json",
   };
-  return snsClient.publishAsync(snsParams);
+  return snsClient.publish(snsParams).promise();
 };
