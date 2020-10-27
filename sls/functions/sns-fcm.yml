@@ -1,0 +1,11 @@
+token-generation:
+  handler: src/lambda/token-gen.handler
+  events:
+    - http:
+        path: notif
+        method: POST
+        cors: true
+        # authorizer: aws_iam
+        request:
+          schema:
+            application/json: ${file(assets/doc/schema/device/createRequest.json)}
