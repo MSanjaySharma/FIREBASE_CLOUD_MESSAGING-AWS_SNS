@@ -1,7 +1,6 @@
 import { publish } from "../utils/sns-notif";
 
 export const handler = async (event) => {
-  //throw new Error("range");
   const { title, message } = JSON.parse(event.body);
   try {
     const publishData = await publish(
