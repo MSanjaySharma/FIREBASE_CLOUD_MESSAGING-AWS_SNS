@@ -1,4 +1,4 @@
-service: DEMO-SNS-API-FCM
+service: FCM-SNS-API
 
 plugins:
   - serverless-bundle
@@ -11,7 +11,6 @@ provider:
   stage: ${opt:stage, 'dev'}
   region: us-east-1
   iamRoleStatements:
-    - ${file(sls/iamRoleStatements/lambda.yml)}
     - ${file(sls/iamRoleStatements/sns.yml)}
   environment: ${file(sls/env/env.yml):${self:custom.stage}}
 
