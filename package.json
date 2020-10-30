@@ -4,7 +4,7 @@
   "description": "Firebase Cloud Messaging integration with AWS SNS for push notifications",
   "main": "index.js",
   "scripts": {
-    "start": "sls deploy -v"
+    "deploy": "sls deploy -v"
   },
   "keywords": [
     "Firebase Cloud Messaging",
