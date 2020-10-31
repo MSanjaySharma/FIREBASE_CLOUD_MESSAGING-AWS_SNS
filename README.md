@@ -13,11 +13,12 @@ Examples of firebase cloud messaging with FCM HTTP v1 API is included.
 ### PreReq
 
 - [Serverless framework](https://www.serverless.com/)
+- [AWS account](https://aws.amazon.com/) for deployment
 - Google Service Account Key (.json). Refer [Creating Service Account](https://cloud.google.com/docs/authentication/production#create_service_account).
 
 ### Usage
 
-- Setup env folder under [sls folder](https://github.com/MSanjaySharma/FIREBASE_CLOUD_MESSAGING-AWS_SNS/tree/master/sls) and populate with env.yml.
+- Setup env folder under [sls folder](https://github.com/MSanjaySharma/FIREBASE_CLOUD_MESSAGING-AWS_SNS/tree/master/sls) and populate with env.yml and add google service account key (.json) accordingly.
 - install dependencies with command
 
 ```
