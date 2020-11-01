@@ -1,5 +1,4 @@
-service:
-  name: DEMO-SNS-FCM
+service: DEMO-SNS-API-FCM
 
 plugins:
   - serverless-bundle

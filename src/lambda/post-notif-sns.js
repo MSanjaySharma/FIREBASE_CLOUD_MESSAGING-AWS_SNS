@@ -13,11 +13,16 @@ export const handler = async (event) => {
     console.log(`PUBLISHED DATA -> ${JSON.stringify(publishData)}`);
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: `Message Published` }),
+      body: JSON.stringify({
+        message: `Message Published. PUBLISHED DATA -> ${JSON.stringify(
+          publishData
+        )}`,
+      }),
     };
   } catch (error) {
+    console.log(`error post-message -> ${JSON.stringify(error)}`);
     return {
-      statusCode: 200,
+      statusCode: 400,
       body: JSON.stringify({
         message: `Message NOT delivered. Error -> ${JSON.stringify(error)}`,
       }),

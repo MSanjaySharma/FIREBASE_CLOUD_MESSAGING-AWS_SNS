@@ -5,16 +5,25 @@ token-generation:
         path: notif
         method: POST
         cors: true
-        # authorizer: aws_iam
         request:
           schema:
             application/json: ${file(assets/schema/token-generation.json)}
 
-post-message-test:
-  handler: src/lambda/post-message.handler
+post-notif-sns:
+  handler: src/lambda/post-notif-sns.handler
   events:
     - http:
-        path: notif_test
+        path: post-notif-sns
+        method: POST
+        cors: true
+        schema:
+          application/json: ${file(assets/schema/post-message.json)}
+
+post-notif-api:
+  handler: src/lambda/post-notif-api.handler
+  events:
+    - http:
+        path: post-notif-api
         method: POST
         cors: true
         schema:

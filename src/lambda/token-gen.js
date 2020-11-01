@@ -19,6 +19,7 @@ export const handler = async (event) => {
       }),
     };
   } catch (error) {
+    console.log(`PlatformEndPoint Error-> ${JSON.stringify(error)}`);
     return {
       statusCode: 400,
       body: JSON.stringify({
