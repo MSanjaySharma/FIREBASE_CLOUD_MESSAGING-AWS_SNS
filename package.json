@@ -14,7 +14,7 @@
   "author": "M Sanjay Sharma",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "googleapis": "^61.0.0"
   },
   "devDependencies": {
